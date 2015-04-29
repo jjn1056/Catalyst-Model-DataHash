@@ -28,6 +28,15 @@ use Catalyst::Test 'MyApp';
   is $c->model->get('b'), 2;
   is $c->model->a, 1;
   is $c->model->b, 2;
+
+  ok !eval {$c->model->get('f')};
+  ok !eval {$c->model->f};
+  ok !eval {$c->model->set(a=>2)};
+
+  ok $c->model->delete('a');
+  ok $c->model->set(a=>2);
+
+
 }
 
 done_testing;
